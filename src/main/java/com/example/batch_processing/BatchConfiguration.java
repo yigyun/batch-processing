@@ -1,8 +1,10 @@
 package com.example.batch_processing;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.JobExecutionListener;
+
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
@@ -19,7 +21,6 @@ import javax.sql.DataSource;
 
 /**
  * 이 예제는 메모리 기반 데이터베이스를 활용한다.
- *
  * FlatFileItemReader는 CSV 파일을 읽어들이고 각 레코드를 Person 객체로 변환한다.
  * PersonItemProcessor는 Person 객체의 이름을 대문자로 변환한다.
  * JdbcBatchItemWriter는 Person 객체를 데이터베이스에 저장한다.
@@ -27,6 +28,8 @@ import javax.sql.DataSource;
  */
 
 @Configuration
+@RequiredArgsConstructor
+@Slf4j
 public class BatchConfiguration {
 
     @Bean
